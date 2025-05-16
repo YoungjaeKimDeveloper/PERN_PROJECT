@@ -44,3 +44,8 @@ PERN STACK
   https://neon.tech/docs/guides/node  
 
   - WHAT THE FUCK IS FOR ARJET?
+
+  config file
+    - Set the configuration
+
+  - Neon Setting하는방법

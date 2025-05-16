@@ -5,6 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 // ROUTES
 import productRoutes from "./routes/productRoutes.js";
+import { sql } from "./config/db.js";
 
 dotenv.config({ path: "/Users/youngjaekim/Desktop/pern/.env" });
 
@@ -27,6 +28,26 @@ app.use(morgan("dev"));
 // Mounting way
 app.use("/api/products", productRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server is Running in ${PORT}`);
-});
+//------------- Connect DB-------------
+async function initDB() {
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS products(
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        image VARCHAR(255) NOT NULL,
+        price DECIMAL(10,2) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `;
+    console.log("DB CONNECTED✅");
+  } catch (error) {
+    console.log("Error initDB", error);
+  }
+}
+
+initDB().then(() =>
+  app.listen(PORT, () => {
+    console.log(`Server is Running in ${PORT}`);
+  })
+);
