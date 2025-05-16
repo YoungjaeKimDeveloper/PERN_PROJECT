@@ -37,3 +37,10 @@ PERN STACK
   - CONTROLLERS
 
 - Divide the Router / Controller
+
+
+- Setting the neon
+
+  https://neon.tech/docs/guides/node  
+
+  - WHAT THE FUCK IS FOR ARJET?
