@@ -19,3 +19,21 @@ PERN STACK
 - app.us(helmet)
 
 - app.user(morgan)
+
+---
+
+나중에 물어볼것
+
+- server.js는 항상 꺠끗해야하는구나
+- API (Application Programming Interface)
+
+  - It allows two different applications to talk to each other.
+  - MAN IN THE MIDDLE
+  - REACT <---API----> DATABASE
+  - API ENDPOINTS
+
+- ROUTERS
+
+  - CONTROLLERS
+
+- Divide the Router / Controller
