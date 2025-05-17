@@ -53,3 +53,6 @@ PERN STACK
   - Divide the rotues and logic
 
   - lib file structure
+
+  - git rm 하는법
+  
