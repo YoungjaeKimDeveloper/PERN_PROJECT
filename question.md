@@ -49,3 +49,5 @@ PERN STACK
     - Set the configuration
 
   - Neon Setting하는방법
+
+  - Divide the rotues and logic
