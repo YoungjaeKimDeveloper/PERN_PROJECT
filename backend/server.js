@@ -24,6 +24,38 @@ app.use(helmet());
 //log the request
 app.use(morgan("dev"));
 // ------------------------------------------
+
+// // apply arcjet rate-limit to all routes
+// app.use(async (req, res, next) => {
+//   try {
+//     const decision = await aj.protect(req, {
+//       requested: 1,
+//     });
+
+//     if (decision.isDenied()) {
+//       if (decision.reason.isRateLimit()) {
+//         return res.status(429).json({ error: "Too many request" });
+//       } else if (decision.reason.isBot()) {
+//         return res.status(403).json({ error: "Bot access denied" });
+//       } else {
+//         return res.status(403).json({ error: "Forbidden" });
+//       }
+//     }
+//     // check for spoofed bots
+//     if (
+//       decision.results.some(
+//         (result) => result.reason.isBot() && result.reason.isSpoofed()
+//       )
+//     ) {
+//       return res.status(403).json({ error: "Spoofed bot detected" });
+//     }
+//     next();
+//   } catch (error) {
+//     console.log("Arcjet error");
+//     next(error);
+//   }
+// });
+
 // BASE ROUTER - app.use(Routing - what is the meaning of use?)
 // Mounting way
 app.use("/api/products", productRoutes);

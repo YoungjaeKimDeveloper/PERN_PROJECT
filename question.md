@@ -51,3 +51,5 @@ PERN STACK
   - Neon Setting하는방법
 
   - Divide the rotues and logic
+
+  - lib file structure
