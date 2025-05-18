@@ -1,9 +1,11 @@
 import { create } from "zustand";
 import api from "../config/axios.config.js";
-import { updateProduct } from "../../../backend/controllers/productController.js";
 
-const useProductStore = create((set) => ({
+const useProductStore = create((set, get) => ({
   // States
+  // products
+  // loading
+  // error
   data: [],
   isLoading: false,
   errorMessage: "",
@@ -15,7 +17,7 @@ const useProductStore = create((set) => ({
     set({ isLoading: true });
     try {
       const response = await api.get("/products");
-      const products = response.data;
+      const products = response.data.data;
       if (products != null) {
         set({ data: products, isLoading: false });
       } else {
@@ -34,7 +36,7 @@ const useProductStore = create((set) => ({
         set({ data: [] });
         set({ isLoading: false });
       } else {
-        set({ data: response.data });
+        set({ data: response.data.data });
         set({ isLoading: false });
       }
     } catch (error) {
@@ -78,7 +80,7 @@ const useProductStore = create((set) => ({
     }
     try {
       const response = await api.put(`/${id}`, { name, image, price });
-      const updateProduct = response.data;
+      const updateProduct = response.data.data;
       if (updateProduct != null) {
         set({ data: updateProduct });
         set({ isLoading: false });
@@ -102,7 +104,7 @@ const useProductStore = create((set) => ({
     }
     try {
       const response = await api.delete(`/${id}`);
-      const data = response.data;
+      const data = response.data.data;
       if (data == null) {
         set({ errorMessage: "Failed to delete post" });
       } else {
@@ -119,3 +121,5 @@ const useProductStore = create((set) => ({
 }));
 
 export default useProductStore;
+
+// 기본적으로 axios가 data로 덮어서 넘어오게됨
