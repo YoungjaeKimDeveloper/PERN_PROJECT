@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import useProductStore from "../store/useProductStore.js"
 import { PlusCircleIcon, RefreshCwIcon } from "lucide-react"
+import ProductCard from "../components/ProductCard.jsx"
 const HomePage = () => {
     const { fetchAllProducts, data, isLoading, errorMessage } = useProductStore()
     useEffect(() => {
@@ -25,12 +26,10 @@ const HomePage = () => {
                 <div className="flex justify-center items-center h-64">
                     <div className="loading loading-spinner loading-lg"></div>
                 </div>) : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {data.map((product)=>{
-                            <div>
-                                
-                            </div>
-                        })}
-                    </div>};
+                {data.map((product) => {
+                    return <ProductCard key={product.id} product={product} />
+                })}
+            </div>}
         </main>
     )
 }
